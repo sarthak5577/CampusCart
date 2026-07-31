@@ -2,11 +2,17 @@
 
 const searchButton = document.querySelector(".search-box button");
 
-searchButton.addEventListener("click", function() {
+if (searchButton) {
 
-    alert("Searching for products...");
+    searchButton.addEventListener("click", function() {
 
-});
+        alert("Searching for products...");
+
+    });
+
+}
+
+
 // Wishlist Interaction
 
 const wishlistButtons = document.querySelectorAll(".wishlist-btn");
@@ -23,16 +29,39 @@ wishlistButtons.forEach(function(button) {
 
 });
 
+
 // Product Details Modal
 
-const viewButtons = document.querySelectorAll(".product-card button:not(.wishlist-btn)");
+const viewButtons = document.querySelectorAll(".view-details-btn");
+
 const modal = document.querySelector(".product-modal");
+
 const closeModal = document.querySelector(".close-modal");
+
+const modalTitle = document.getElementById("modal-title");
+
+const modalPrice = document.getElementById("modal-price");
+
+const modalCondition = document.getElementById("modal-condition");
+
+const modalSeller = document.getElementById("modal-seller");
 
 
 viewButtons.forEach(function(button) {
 
     button.addEventListener("click", function() {
+
+        const card = button.closest(".product-card");
+
+
+        modalTitle.textContent = card.dataset.title;
+
+        modalPrice.textContent = "Price: " + card.dataset.price;
+
+        modalCondition.textContent = "Condition: " + card.dataset.condition;
+
+        modalSeller.textContent = "Seller: " + card.dataset.seller;
+
 
         modal.style.display = "flex";
 
@@ -41,42 +70,65 @@ viewButtons.forEach(function(button) {
 });
 
 
-closeModal.addEventListener("click", function() {
+if (closeModal) {
 
-    modal.style.display = "none";
+    closeModal.addEventListener("click", function() {
 
-});
+        modal.style.display = "none";
+
+    });
+
+}
+
 
 // Sell Item Modal
 
 const sellModal = document.querySelector(".sell-modal");
+
 const closeSell = document.querySelector(".close-sell");
 
-// Navbar Sell Item Link
+
 const navbarSell = document.querySelector(".nav-links li:nth-child(3) a");
 
-// Hero Sell Button
 const heroSell = document.querySelector(".sell-btn");
 
-// Open from Navbar
-navbarSell.addEventListener("click", function(event) {
 
-    event.preventDefault();
+// Navbar Sell Button
 
-    sellModal.style.display = "flex";
+if (navbarSell) {
 
-});
+    navbarSell.addEventListener("click", function(event) {
 
-// Open from Hero Button
-heroSell.addEventListener("click", function() {
+        event.preventDefault();
 
-    sellModal.style.display = "flex";
+        sellModal.style.display = "flex";
 
-});
+    });
 
-// Close Modal
-closeSell.addEventListener("click", function() {
+}
 
-    sellModal.style.display = "none";
 
-});
+// Hero Sell Button
+
+if (heroSell) {
+
+    heroSell.addEventListener("click", function() {
+
+        sellModal.style.display = "flex";
+
+    });
+
+}
+
+
+// Close Sell Popup
+
+if (closeSell) {
+
+    closeSell.addEventListener("click", function() {
+
+        sellModal.style.display = "none";
+
+    });
+
+}
