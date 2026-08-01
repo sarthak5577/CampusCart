@@ -132,3 +132,118 @@ if (closeSell) {
     });
 
 }
+
+// Register Form Validation
+
+const registerForm = document.getElementById("register-form");
+
+
+if(registerForm){
+
+    registerForm.addEventListener("submit", function(event){
+
+        event.preventDefault();
+
+        const inputs = registerForm.querySelectorAll("input");
+
+        let empty = false;
+
+
+        inputs.forEach(function(input){
+
+            if(input.value.trim() === ""){
+                empty = true;
+            }
+
+        });
+
+
+        if(empty){
+
+            alert("Please fill all fields");
+
+        }
+
+        else{
+
+            alert("Registration successful!");
+
+        }
+
+
+    });
+
+}
+
+// Login Form Validation
+
+const loginForm = document.getElementById("login-form");
+
+
+if(loginForm){
+
+    loginForm.addEventListener("submit", function(event){
+
+        event.preventDefault();
+
+
+        const inputs = loginForm.querySelectorAll("input");
+
+        let empty = false;
+
+
+        inputs.forEach(function(input){
+
+            if(input.value.trim() === ""){
+
+                empty = true;
+
+            }
+
+        });
+
+
+        if(empty){
+
+            alert("Please fill all fields");
+
+        }
+
+        else{
+
+            alert("Login successful!");
+
+        }
+
+
+    });
+
+}
+
+// Show / Hide Login Password
+
+const loginPassword = document.getElementById("login-password");
+const toggleLoginPassword = document.getElementById("toggle-login-password");
+
+
+if(loginPassword && toggleLoginPassword){
+
+    toggleLoginPassword.addEventListener("click", function(){
+
+        if(loginPassword.type === "password"){
+
+            loginPassword.type = "text";
+            toggleLoginPassword.textContent = "🙈";
+
+        }
+
+        else{
+
+            loginPassword.type = "password";
+            toggleLoginPassword.textContent = "👁️";
+
+        }
+
+    });
+
+}
