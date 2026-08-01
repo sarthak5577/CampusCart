@@ -142,7 +142,6 @@ if(registerForm){
 
     registerForm.addEventListener("submit", function(event){
 
-        event.preventDefault();
 
         const inputs = registerForm.querySelectorAll("input");
 
@@ -152,7 +151,9 @@ if(registerForm){
         inputs.forEach(function(input){
 
             if(input.value.trim() === ""){
+
                 empty = true;
+
             }
 
         });
@@ -160,13 +161,9 @@ if(registerForm){
 
         if(empty){
 
+            event.preventDefault();
+
             alert("Please fill all fields");
-
-        }
-
-        else{
-
-            alert("Registration successful!");
 
         }
 
@@ -174,7 +171,6 @@ if(registerForm){
     });
 
 }
-
 // Login Form Validation
 
 const loginForm = document.getElementById("login-form");

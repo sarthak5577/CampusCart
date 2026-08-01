@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        CampusCart Register
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="login-container">
+
+    <h2>
+        Create Account
+    </h2>
+
+    <p>
+        Join CampusCart today
+    </p>
+
+
+    <form id="register-form" method="POST">
+
+
+        <input 
+        name="name"
+        type="text" 
+        placeholder="Full Name"
+        required>
+
+
+        <input 
+        name="email"
+        type="email" 
+        placeholder="Email"
+        required>
+
+
+        <input 
+        name="password"
+        type="password" 
+        placeholder="Create Password"
+        required>
+
+
+        <input 
+        name="college"
+        type="text" 
+        placeholder="College Name"
+        required>
+
+
+        <input 
+        name="year"
+        type="text" 
+        placeholder="Year"
+        required>
+
+
+        <input 
+        name="branch"
+        type="text" 
+        placeholder="Branch"
+        required>
+
+
+        <button type="submit">
+            Register
+        </button>
+
+
+    </form>
+
+
+    <p>
+        Already have an account?
+
+        <a href="/login">
+            Login
+        </a>
+
+    </p>
+
+
+</div>
+
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
