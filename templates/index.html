@@ -1,464 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusCart</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CampusCart</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
+
+
 <body>
-    
 
-    <header class="navbar">
-        <div class="logo">
-            CampusCart
-        </div>
 
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Browse</a></li>
-                <li><a href="#">Sell Item</a></li>
-                <li><a href="/login">Login</a></li>
-            </ul>
-        </nav>
-    </header>
+<header class="navbar">
 
-    <!-- This section contains the hero content -->   
+<div class="logo">
+CampusCart
+</div>
+
+
+<nav>
+
+<ul class="nav-links">
+
+
+<li>
+<a href="/">Home</a>
+</li>
+
+
+<li>
+<a href="#">Browse</a>
+</li>
+
+
+<li>
+<a href="/sell">Sell Item</a>
+</li>
+
+
+
+{% if session.get("user_name") %}
+
+
+<li>
+<a href="#">
+Welcome, {{ session.get("user_name") }}
+</a>
+</li>
+
+
+<li>
+<a href="/logout">
+Logout
+</a>
+</li>
+
+
+{% else %}
+
+
+<li>
+<a href="/login">
+Login
+</a>
+</li>
+
+
+<li>
+<a href="/register">
+Register
+</a>
+</li>
+
+
+{% endif %}
+
+
+
+</ul>
+
+</nav>
+
+</header>
+
+
+
 <section class="hero">
-    
 
-    <div class="hero-content">
 
-        <h1>
-            Buy & Sell Everything
-            <br>
-            Within Your Campus
-        </h1>
+<div class="hero-content">
 
-        <p>
-            Find books, electronics, cycles, hostel items
-            and more from students around you.
-        </p>
 
-        <div class="search-box">
-            <input type="text" placeholder="Search products...">
-            <button>Search</button>
-        </div>
+<h1>
+Buy & Sell Everything
+<br>
+Within Your Campus
+</h1>
 
-        <button class="sell-btn">
-            Sell Your Item
-        </button>
 
-    </div>
+<p>
+Find books, electronics, cycles, hostel items
+and more from students around you.
+</p>
+
+
+
+<div class="search-box">
+
+<input 
+type="text"
+placeholder="Search products...">
+
+
+<button>
+Search
+</button>
+
+</div>
+
+
+
+<a href="/sell" class="sell-btn">
+Sell Item
+</a>
+
+
+
+</div>
+
 
 </section>
 
-<!-- This section tells you about different categories -->   
+
+
+
+
 <section class="categories">
 
-    <h2>
-        Explore Categories
-    </h2>
 
-    <div class="category-container">
+<h2>
+Explore Categories
+</h2>
 
-        <div class="category-card">
-            📚
-            <h3>Books</h3>
-        </div>
 
-        <div class="category-card">
-            💻
-            <h3>Electronics</h3>
-        </div>
+<div class="category-container">
 
-        <div class="category-card">
-            🧮
-            <h3>Calculator</h3>
-        </div>
 
-        <div class="category-card">
-            🚲
-            <h3>Bicycle</h3>
-        </div>
+<div class="category-card">
+📚
+<h3>Books</h3>
+</div>
 
-        <div class="category-card">
-            🛏️
-            <h3>Hostel Items</h3>
-        </div>
 
-        <div class="category-card">
-            🎮
-            <h3>Gaming</h3>
-        </div>
+<div class="category-card">
+💻
+<h3>Electronics</h3>
+</div>
 
-    </div>
+
+<div class="category-card">
+🧮
+<h3>Calculator</h3>
+</div>
+
+
+<div class="category-card">
+🚲
+<h3>Bicycle</h3>
+</div>
+
+
+<div class="category-card">
+🛏️
+<h3>Hostel Items</h3>
+</div>
+
+
+<div class="category-card">
+🎮
+<h3>Gaming</h3>
+</div>
+
+
+</div>
+
 
 </section>
-<!-- this is the products section -->   
+
+
+
+
 
 <section class="products">
 
-    <h2>
-        Latest Products
-    </h2>
 
-    <div class="product-container">
-
-        <!-- Product 1 -->
-
-        <div class="product-card"
-             data-title="Engineering Math Book"
-             data-price="₹300"
-             data-condition="Good Condition"
-             data-seller="Sarthak">
-
-            <div class="product-image">
-                📚
-            </div>
-
-            <h3>
-                Engineering Math Book
-            </h3>
-
-            <p>
-                Good Condition
-            </p>
-
-            <h4>
-                ₹300
-            </h4>
-
-            <button class="wishlist-btn">
-                ❤️ Add to Wishlist
-            </button>
-
-            <button class="view-details-btn">
-                View Details
-            </button>
-
-        </div>
+<h2>
+Latest Products
+</h2>
 
 
-        <!-- Product 2 -->
-
-        <div class="product-card"
-             data-title="Laptop Stand"
-             data-price="₹500"
-             data-condition="Like New"
-             data-seller="Rahul">
-
-            <div class="product-image">
-                💻
-            </div>
-
-            <h3>
-                Laptop Stand
-            </h3>
-
-            <p>
-                Like New
-            </p>
-
-            <h4>
-                ₹500
-            </h4>
-
-            <button class="wishlist-btn">
-                ❤️ Add to Wishlist
-            </button>
-
-            <button class="view-details-btn">
-                View Details
-            </button>
-
-        </div>
+<div class="product-container">
 
 
-        <!-- Product 3 -->
+<div class="product-card"
+data-title="Engineering Math Book"
+data-price="₹300"
+data-condition="Good Condition"
+data-seller="Sarthak">
 
-        <div class="product-card"
-             data-title="Bicycle"
-             data-price="₹2000"
-             data-condition="Used - Good"
-             data-seller="Aman">
 
-            <div class="product-image">
-                🚲
-            </div>
+<div class="product-image">
+📚
+</div>
 
-            <h3>
-                Bicycle
-            </h3>
 
-            <p>
-                Used - Good
-            </p>
+<h3>
+Engineering Math Book
+</h3>
 
-            <h4>
-                ₹2000
-            </h4>
 
-            <button class="wishlist-btn">
-                ❤️ Add to Wishlist
-            </button>
+<p>
+Good Condition
+</p>
 
-            <button class="view-details-btn">
-                View Details
-            </button>
 
-        </div>
+<h4>
+₹300
+</h4>
 
-    </div>
+
+<button class="wishlist-btn">
+❤️ Add to Wishlist
+</button>
+
+
+<button class="view-details-btn">
+View Details
+</button>
+
+
+</div>
+<div class="product-card"
+data-title="Laptop Stand"
+data-price="₹500"
+data-condition="Like New"
+data-seller="Rahul">
+
+
+<div class="product-image">
+💻
+</div>
+
+
+<h3>
+Laptop Stand
+</h3>
+
+
+<p>
+Like New
+</p>
+
+
+<h4>
+₹500
+</h4>
+
+
+<button class="wishlist-btn">
+❤️ Add to Wishlist
+</button>
+
+
+<button class="view-details-btn">
+View Details
+</button>
+
+
+</div>
+
+
+
+
+<div class="product-card"
+data-title="Bicycle"
+data-price="₹2000"
+data-condition="Used - Good"
+data-seller="Aman">
+
+
+<div class="product-image">
+🚲
+</div>
+
+
+<h3>
+Bicycle
+</h3>
+
+
+<p>
+Used - Good
+</p>
+
+
+<h4>
+₹2000
+</h4>
+
+
+<button class="wishlist-btn">
+❤️ Add to Wishlist
+</button>
+
+
+<button class="view-details-btn">
+View Details
+</button>
+
+
+</div>
+
+
+
+</div>
+
 
 </section>
 
-<!-- This section tells you about the features of the website -->
+
+
+
+
 <section class="features">
 
-    <h2>
-        Why Choose CampusCart?
-    </h2>
+
+<h2>
+Why Choose CampusCart?
+</h2>
 
 
-    <div class="feature-container">
-
-        <div class="feature-card">
-
-            <div class="feature-icon">
-                🎓
-            </div>
-
-            <h3>
-                Only College Students
-            </h3>
-
-            <p>
-                Connect and trade with students from your own campus.
-            </p>
-
-        </div>
+<div class="feature-container">
 
 
-        <div class="feature-card">
+<div class="feature-card">
 
-            <div class="feature-icon">
-                🔒
-            </div>
+<div class="feature-icon">
+🎓
+</div>
 
-            <h3>
-                Safe & Trusted
-            </h3>
+<h3>
+Only College Students
+</h3>
 
-            <p>
-                No strangers, no shipping problems, just campus exchange.
-            </p>
+<p>
+Connect and trade with students from your own campus.
+</p>
 
-        </div>
-
-
-        <div class="feature-card">
-
-            <div class="feature-icon">
-                💰
-            </div>
-
-            <h3>
-                Student Friendly Prices
-            </h3>
-
-            <p>
-                Buy and sell items at affordable prices.
-            </p>
-
-        </div>
+</div>
 
 
-        <div class="feature-card">
 
-            <div class="feature-icon">
-                ⚡
-            </div>
+<div class="feature-card">
 
-            <h3>
-                Quick Exchange
-            </h3>
+<div class="feature-icon">
+🔒
+</div>
 
-            <p>
-                Meet nearby students and complete deals easily.
-            </p>
+<h3>
+Safe & Trusted
+</h3>
 
-        </div>
+<p>
+No strangers, no shipping problems, just campus exchange.
+</p>
 
-    </div>
+</div>
+
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+💰
+</div>
+
+<h3>
+Student Friendly Prices
+</h3>
+
+<p>
+Buy and sell items at affordable prices.
+</p>
+
+</div>
+
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+⚡
+</div>
+
+<h3>
+Quick Exchange
+</h3>
+
+<p>
+Meet nearby students and complete deals easily.
+</p>
+
+</div>
+
+
+</div>
+
 
 </section>
+
+
+
+
 
 <footer class="footer">
 
-    <div class="footer-container">
 
-        <div class="footer-brand">
-
-            <h2>
-                CampusCart
-            </h2>
-
-            <p>
-                Buy. Sell. Save. All on Campus.
-            </p>
-
-        </div>
+<div class="footer-container">
 
 
-        <div class="footer-links">
+<div class="footer-brand">
 
-            <h3>
-                Quick Links
-            </h3>
+<h2>
+CampusCart
+</h2>
 
-            <ul>
-                <li>Home</li>
-                <li>Browse</li>
-                <li>Sell Item</li>
-                <li>Login</li>
-            </ul>
-
-        </div>
-
-
-        <div class="footer-links">
-
-            <h3>
-                Categories
-            </h3>
-
-            <ul>
-                <li>Books</li>
-                <li>Electronics</li>
-                <li>Hostel Items</li>
-                <li>Gaming</li>
-            </ul>
-
-        </div>
-
-
-        <div class="footer-contact">
-
-            <h3>
-                Contact
-            </h3>
-
-            <p>
-                support@campuscart.com
-            </p>
-
-            <p>
-                Made for students ❤️
-            </p>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <p>
-            © 2026 CampusCart. All Rights Reserved.
-        </p>
-
-    </div>
-
-
-</footer>  
-<div class="product-modal">
-
-    <div class="modal-content">
-
-        <span class="close-modal">
-            &times;
-        </span>
-
-        <h2 id="modal-title">
-            Product Name
-        </h2>
-
-        <p id="modal-price">
-            Price
-        </p>
-
-        <p id="modal-condition">
-            Condition
-        </p>
-
-        <p id="modal-seller">
-            Seller
-        </p>
-
-        <button id="contact-seller-btn">
-            Contact Seller
-        </button>
-
-    </div>
+<p>
+Buy. Sell. Save. All on Campus.
+</p>
 
 </div>
-<div class="sell-modal">
-
-    <div class="sell-content">
-
-        <span class="close-sell">
-            &times;
-        </span>
 
 
-        <h2>
-            Sell Your Item
-        </h2>
+
+<div class="footer-links">
+
+<h3>
+Quick Links
+</h3>
+
+<ul>
+
+<li>Home</li>
+
+<li>Browse</li>
+
+<li>Sell Item</li>
+
+<li>Login</li>
+
+</ul>
+
+</div>
 
 
-        <form>
-
-            <input type="text" placeholder="Product Name">
 
 
-            <select>
-                <option>Select Category</option>
-                <option>Books</option>
-                <option>Electronics</option>
-                <option>Calculator</option>
-                <option>Bicycle</option>
-                <option>Hostel Items</option>
-                <option>Gaming</option>
-            </select>
+<div class="footer-links">
+
+<h3>
+Categories
+</h3>
+
+<ul>
+
+<li>Books</li>
+
+<li>Electronics</li>
+
+<li>Hostel Items</li>
+
+<li>Gaming</li>
+
+</ul>
+
+</div>
 
 
-            <input type="number" placeholder="Price">
+
+<div class="footer-contact">
+
+<h3>
+Contact
+</h3>
+
+<p>
+support@campuscart.com
+</p>
+
+<p>
+Made for students ❤️
+</p>
+
+</div>
 
 
-            <textarea placeholder="Description"></textarea>
+</div>
 
 
-            <input type="file">
 
 
-            <button type="submit">
-                Post Item
-            </button>
+<div class="footer-bottom">
+
+<p>
+© 2026 CampusCart. All Rights Reserved.
+</p>
+
+</div>
 
 
-        </form>
+</footer>
 
-    </div>
 
-</div> 
+
+
+
+<div class="product-modal">
+
+
+<div class="modal-content">
+
+
+<span class="close-modal">
+&times;
+</span>
+
+
+<h2 id="modal-title">
+Product Name
+</h2>
+
+
+<p id="modal-price">
+Price
+</p>
+
+
+<p id="modal-condition">
+Condition
+</p>
+
+
+<p id="modal-seller">
+Seller
+</p>
+
+
+<button id="contact-seller-btn">
+Contact Seller
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
+
 </body>
+
 </html>

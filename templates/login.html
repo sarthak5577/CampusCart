@@ -3,74 +3,62 @@
 
 <head>
 
-    <title>
-        CampusCart Login
-    </title>
+    <title>CampusCart Login</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
 
-
 <body>
 
+<div class="login-container">
 
-    <div class="login-container">
+    <h2>Welcome Back</h2>
 
-        <h2>
-            Welcome Back
-        </h2>
+    <p>Login to continue with CampusCart</p>
 
-        <p>
-            Login to continue with CampusCart
-        </p>
+    <form id="login-form" method="POST">
 
+        <input
+        name="email"
+        type="email"
+        placeholder="Enter Email"
+        required>
 
-        <form id="login-form">
+        <div class="password-box">
 
+            <input
+            id="login-password"
+            name="password"
+            type="password"
+            placeholder="Enter Password"
+            required>
 
-            <input 
-            type="email" 
-            placeholder="Enter Email">
+            <span id="toggle-login-password">
+                👁️
+            </span>
 
+        </div>
 
-            <div class="password-box">
+        <button type="submit">
+            Login
+        </button>
 
-                <input 
-                id="login-password"
-                type="password" 
-                placeholder="Enter Password">
+    </form>
 
-                <span id="toggle-login-password">
-                    👁️
-                </span>
+    <p>
 
-            </div>
+        Don't have an account?
 
+        <a href="/register">
+            Register
+        </a>
 
-            <button type="submit">
-                Login
-            </button>
+    </p>
 
+</div>
 
-        </form>
-
-
-        <p>
-            Don't have an account?
-
-            <a href="/register">
-                Register
-            </a>
-
-        </p>
-
-
-    </div>
-
-
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 
